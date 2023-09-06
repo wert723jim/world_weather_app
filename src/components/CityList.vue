@@ -29,6 +29,9 @@ const getCities = async () => {
 
     const weatherData = await Promise.all(requests)
 
+    // flicker delay
+    await new Promise((res) => setTimeout(res, 500))
+
     weatherData.forEach((value, index) => {
       // 將 API 回傳值
       savedCities.value[index].weather = value.data

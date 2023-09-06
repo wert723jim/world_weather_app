@@ -2,7 +2,7 @@
   <Suspense>
     <AsyncCityView />
     <template #fallback>
-      <p>Loading ...</p>
+      <CityViewSkeleton />
     </template>
   </Suspense>
   
@@ -10,4 +10,5 @@
 
 <script setup>
 import AsyncCityView from '../components/AsyncCityView.vue';
+import CityViewSkeleton from '../components/CityViewSkeleton.vue';
 </script>
