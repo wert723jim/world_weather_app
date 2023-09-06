@@ -93,6 +93,7 @@ const addCities = () => {
   let query = {...route.query}
   console.log(query)
   delete query.preview
+  query.id = locationObj.id
   router.replace({ query })
 }
 </script>
