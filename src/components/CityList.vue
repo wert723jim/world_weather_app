@@ -1,12 +1,10 @@
 <template>
-  <div class="flex flex-col gap-5">
-    <div v-for="city in savedCities" :key="city.id">
-      <CityCard :city="city" @click="goToCityView(city)"/>
-    </div>
-    <p v-if="savedCities.length === 0">
-      No locations added. To start tracking a location, search in the field above.
-    </p>
+  <div v-for="city in savedCities" :key="city.id">
+    <CityCard :city="city" @click="goToCityView(city)"/>
   </div>
+  <p v-if="savedCities.length === 0">
+    No locations added. To start tracking a location, search in the field above.
+  </p>
 </template>
 
 <script setup>
@@ -43,7 +41,11 @@ const goToCityView = (city) => {
   router.push({
     name: 'city',
     params: {city: city.city, state: city.state},
-    query: {lat: city.coords.lat, lon: city.coords.lon, id: city.id}
+    query: {
+      lat: city.coords.lat,
+      lon: city.coords.lon,
+      id: city.id
+    }
   })
 }
   

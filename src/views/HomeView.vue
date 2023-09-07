@@ -26,7 +26,7 @@
         </ul>
       </template>
     </div>
-    <div>
+    <div class="flex flex-col gap-4">
       <Suspense>
         <CityList />
         <template #fallback>
@@ -34,7 +34,6 @@
         </template>
       </Suspense>
     </div>
-    
   </main>
 </template>
 
@@ -70,9 +69,7 @@ const getSearchResults = () => {
   }, 500)
 }
 const previewCity = (result) => {
-  console.log(result)
   const [city, state] = result.place_name.split(',')
-  console.log(city, state)
   router.push({
     name: 'city',
     params: { city: city, state: state.replaceAll(' ', '') },
