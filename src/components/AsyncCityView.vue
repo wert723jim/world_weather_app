@@ -109,12 +109,12 @@
 <script setup>
 import axios from 'axios'
 import { useRoute, useRouter } from 'vue-router'
-
+const openWeather_token = import.meta.env.VITE_OPENWEATHER_TOKEN
 const route = useRoute()
 const router = useRouter()
 const getWeatherData = async () => {
   try {
-    const weatherData = await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lon}&appid=fc945be1716ca9553dd9792b9881f5c8&units=metric`)
+    const weatherData = await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${route.query.lat}&lon=${route.query.lon}&appid=${openWeather_token}&units=metric`)
     //  本地UTC 跟 本地時區 差異(本地UTC - 本地) => 轉換成 ms
     const localOffset = new Date().getTimezoneOffset() * 60000
     // weather.data.current.dt => 目前 UTC 時間

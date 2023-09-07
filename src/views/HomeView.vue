@@ -43,12 +43,11 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import CityList from '../components/CityList.vue'
 import CityCardSkeleton from '../components/CityCardSkeleton.vue';
-
+const mapBox_token = import.meta.env.VITE_MAPBOX_TOKEN
 const router = useRouter()
 const searchQuery = ref('')
 const queryTimeout = ref(null)
 const searchResults = ref(null)
-const access_token = 'pk.eyJ1Ijoic3VyaW1hIiwiYSI6ImNsbTAwZTZjcjM1OXczcXBlam9sd3Vhc2YifQ.NPeUEPqW904rhmogN3Z22Q'
 const searchError = ref(null)
 
 // lazy search => search (call api when user stop typing)
@@ -58,7 +57,7 @@ const getSearchResults = () => {
   queryTimeout.value = setTimeout(async () => {
     if (searchQuery.value) {
       try {
-        const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?types=place&access_token=${access_token}`)
+        const { data } = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?types=place&access_token=${mapBox_token}`)
         searchResults.value = data.features
       } catch {
         searchError.value = true
