@@ -22,7 +22,7 @@ const getCities = async () => {
     const requests = []
     savedCities.value.forEach((city) => {
       requests.push(
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.coords.lat}&lon=${city.coords.lon}&appid=${openWeather_token}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.coords.lat}&lon=${city.coords.lon}&appid=${openWeather_token}&units=metric`)
       )
     })
 
